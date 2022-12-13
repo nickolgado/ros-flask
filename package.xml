@@ -1,0 +1,28 @@
+<package>
+  <name>ros-flask</name>
+  <version>1.0.0</version>
+  <description>A Colcon package that takes a ROS video stream topic and hosts it on an HTML page.</description>
+  <maintainer email="your@email.com">Your Name</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>python</build_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>flask</build_depend>
+  <build_depend>opencv-python</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
+  <run_depend>python</run_depend>
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>flask</run_depend>
+  <run_depend>opencv-python</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+
+  <export>
+    <python_entry_point>src.http_server</python_entry_point>
+  </export>
+</package>
