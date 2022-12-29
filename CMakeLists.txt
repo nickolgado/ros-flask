@@ -23,6 +23,8 @@ include_directories(
 catkin_install_python(PROGRAMS
    src/http_server.py
    src/video_processor.py
+   src/webcam.py
+   web/index.html
    src/__init__.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )

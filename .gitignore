@@ -2,3 +2,4 @@
 /build
 /install
 *.pyc
+*.DS_Store

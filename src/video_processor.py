@@ -20,8 +20,10 @@ class VideoProcessor:
         self.encoder_thread.start()
 
     def process_frame(self, msg):
+        print("recieved frame")
         # Convert the ROS image message to a OpenCV image
-        frame = np.array(cv2.imdecode(msg.data, cv2.IMREAD_COLOR))
+        image_data = np.frombuffer(msg.data, np.uint8)
+        frame = cv2.imdecode(image_data, cv2.IMREAD_COLOR)
 
         # Do any desired processing on the frame here...
 
@@ -38,12 +40,13 @@ class VideoProcessor:
             frame = self.frame_queue.get()
 
             # Encode the frame as a JPEG image
-            jpeg_frame = cv2.imencode('.jpg', frame)[1].tobytes()
+            jpeg_frame = cv2.imencode('.png', frame)[1].tobytes()
             jpeg_frame = np.array(jpeg_frame)
+            print("encoded recieved frame")
 
             # Send the encoded frame to the HTTP server for display
             self.http_server.send_frame(jpeg_frame)
 
-if __name__ == '__main__':
-    processor = VideoProcessor()
-    rospy.spin()
+# if __name__ == '__main__':
+#     processor = VideoProcessor()
+#     rospy.spin()
